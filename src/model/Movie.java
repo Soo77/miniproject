@@ -3,7 +3,7 @@ package model;
 import java.util.Arrays;
 
 public class Movie {
-    //관리번호
+    //관리번호 
     private int movieId;
     // 영화제목
     private String moviesTitle;
