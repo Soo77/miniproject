@@ -117,6 +117,7 @@ public class MovieController {
       return;
     }
 
+    
     for (Movie m : resultValue2) {
       m.setMoviesSeat(m.getMoviesSeat().trim());
       System.out.println(m);
@@ -124,6 +125,9 @@ public class MovieController {
 
 
     while (true) {
+      if(resultValue2.isEmpty()) {
+        break;
+      }
       System.out.print("삭제하실 movieId를 입력해주세요(뒤로가기는 6번)  >>");
       int mId = sc.nextInt();
       
@@ -159,7 +163,7 @@ public class MovieController {
           }
 
           String tempDateandTime = tempMovieDate + " " + tempMovieTime;
-          System.out.println("\n======삭제된 좌석==========");
+          System.out.println("\n======삭제된 후 좌석==========");
           boolean[][] tempseat = movieInfo.get(tempMovieTitle).get(tempDateandTime);
 
           for (int j = 0; j < intRow.length; j++) {
@@ -320,24 +324,21 @@ public class MovieController {
       System.out.println();
     }
     System.out.print("번호를 눌러 열을 선택하세요>>");
-    int column = sc.nextInt();
-    while (column != 1 && column != 2 && column != 3 && column != 4) {
+    String strCol = sc.next();
+    int column = 0;
+    while (!(strCol.equals("1") || strCol.equals("2") || strCol.equals("3") || strCol.equals("4"))) {
       System.out.println("다시 입력해주세요.");
       System.out.print("번호를 눌러 열을 선택하세요>>");
-      column = sc.nextInt();
-      if (column == 1) {
-        column = 1;
-        break;
-      } else if (column == 2) {
-        column = 2;
-        break;
-      } else if (column == 3) {
-        column = 3;
-        break;
-      } else if (column == 4) {
-        column = 4;
-        break;
-      }
+      strCol = sc.next();
+    }
+    if (strCol.equals("1")) {
+      column = 1;
+    } else if (strCol.equals("2")) {
+      column = 2;
+    } else if (strCol.equals("3")) {
+      column = 3;
+    } else if (strCol.equals("4")) {
+      column = 4;
     }
 
 
